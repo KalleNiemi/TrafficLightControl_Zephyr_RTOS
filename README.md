@@ -1,11 +1,11 @@
 # TrafficLightControl_Zephyr_RTOS
 
-|       Commands                        Function
-|       !TRAFFIC                        turns on the traffic lights
-|       !YELLOW                         Yellow blink program that runs indefinitely
-|       !OFF                            Turns off any program or light mode
-|
-|       ?DEBUG                          Turns debug prints on and off
+       Commands                        Function
+      !TRAFFIC                        turns on the traffic lights
+      !YELLOW                         Yellow blink program that runs indefinitely
+       !OFF                            Turns off any program or light mode
+
+      ?DEBUG                          Turns debug prints on and off
 |       ?TIME                           Prints how long the device has been on
 |
 |       <COLOR,SECONDS,ON/OFF/BLINK>    F.ex RED,10,ON
