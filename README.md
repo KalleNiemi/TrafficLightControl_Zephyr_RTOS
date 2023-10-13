@@ -1,5 +1,8 @@
 # TrafficLightControl_Zephyr_RTOS
 
+Acceptance testing is done with using Robot Framework with a serial connection library.
+
+       User Manual:
        Commands                        Function
        !TRAFFIC                        turns on the traffic lights
        !YELLOW                         Yellow blink program that runs indefinitely
