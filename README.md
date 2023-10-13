@@ -1,6 +1,7 @@
 # TrafficLightControl_Zephyr_RTOS
 
-This is a embedded software development project using Zephyr RTOS and Nordic Semiconductor NRF5340 AUDIO board.
+This is a embedded software development project using Zephyr RTOS and Nordic Semiconductor NRF5340 AUDIO board.  
+  
 Acceptance testing is done with using Robot Framework with a serial connection library.
 
 > #### Serial COM commands  
