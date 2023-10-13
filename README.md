@@ -3,10 +3,10 @@
 Acceptance testing is done with using Robot Framework with a serial connection library.
 
 #### Serial COM commands  
-Commands    Function  
-!TRAFFIC    Turns on the traffic lights  
-!YELLOW                         Yellow blink program that runs indefinitely  
-!OFF                            Turns off any program or light mode  
+Commands - Function  
+!TRAFFIC - Turns on the traffic lights  
+!YELLOW - Yellow blink program that runs indefinitely  
+!OFF - Turns off any program or light mode  
   
 ?DEBUG                          Turns debug prints on and off  
 ?TIME                           Prints how long the device has been on  
