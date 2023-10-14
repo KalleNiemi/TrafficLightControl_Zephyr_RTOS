@@ -57,7 +57,6 @@ int blinkSwitch2 =1;
 int trafficON =0;
 int debugEnabled = 0;
 int blinkTimerStarted;
-
 int colorOK = 0;
 int secondsOK = 0;
 int commandOK = 0;
