@@ -3,7 +3,7 @@
 * This is a embedded software development project using Zephyr RTOS and Nordic Semiconductor NRF5340 AUDIO board.  
   
 * Acceptance testing is done with using Robot Framework with a serial connection library.
-<img src="/Robot_Framework_SS.png" alt="Screenshot of completed test." style="height: 100px; width:100px;"/>
+<img src="/Robot_Framework_SS.png" alt="Screenshot of completed test." style="height: 300px; width:300px;"/>
 > #### Serial COM commands  
 > Commands - Function  
 > !TRAFFIC - Turns on the traffic lights  
