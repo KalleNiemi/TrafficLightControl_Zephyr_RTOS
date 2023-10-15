@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20231015 17:49:19.644" rpa="false" schemaversion="4">
+<suite id="s1" name="Tests" source="c:\Users\kalep\Documents\3Vuosi_1Jakso\SW_design_embedded\code\TrafficLightControl_Zephyr_RTOS\robot_framework\tests.robot">
+<test id="s1-t1" name="Connect Serial" line="9">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Connecting to ${board}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231015 17:49:19.911" endtime="20231015 17:49:19.922"/>
+</kw>
+<kw name="Add Port" library="SerialLibrary">
+<arg>${com}</arg>
+<arg>baudrate=115200</arg>
+<arg>encoding=ascii</arg>
+<doc>Adds new port with specified locator.</doc>
+<status status="PASS" starttime="20231015 17:49:19.972" endtime="20231015 17:49:20.016"/>
+</kw>
+<kw name="Port Should Be Open" library="SerialLibrary">
+<arg>${com}</arg>
+<doc>Fails if specified port is closed.</doc>
+<status status="PASS" starttime="20231015 17:49:20.019" endtime="20231015 17:49:20.022"/>
+</kw>
+<kw name="Reset Input Buffer" library="SerialLibrary">
+<doc>Clears input buffer.</doc>
+<status status="PASS" starttime="20231015 17:49:20.023" endtime="20231015 17:49:20.025"/>
+</kw>
+<kw name="Reset Output Buffer" library="SerialLibrary">
+<doc>Clears outout buffer.</doc>
+<status status="PASS" starttime="20231015 17:49:20.082" endtime="20231015 17:49:20.083"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231015 17:49:21.110" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231015 17:49:20.109" endtime="20231015 17:49:21.110"/>
+</kw>
+<status status="PASS" starttime="20231015 17:49:19.894" endtime="20231015 17:49:21.134"/>
+</test>
+<test id="s1-t2" name="Turn On Debug" line="16">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Turning Debug ON</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231015 17:49:21.305" endtime="20231015 17:49:21.323"/>
+</kw>
+<kw name="DebugON/OFF">
+<kw name="Write Data" library="SerialLibrary">
+<arg>?DEBUG\n</arg>
+<arg>encoding=ascii</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" starttime="20231015 17:49:21.355" endtime="20231015 17:49:21.355"/>
+</kw>
+<status status="PASS" starttime="20231015 17:49:21.344" endtime="20231015 17:49:21.355"/>
+</kw>
+<kw name="Read Until" library="SerialLibrary">
+<var>${read}</var>
+<arg>terminator=\n</arg>
+<arg>encoding=ascii</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<msg timestamp="20231015 17:49:22.378" level="INFO">${read} = DEBUG prints enabled
+</msg>
+<status status="PASS" starttime="20231015 17:49:21.355" endtime="20231015 17:49:22.379"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${read}</arg>
+<arg>DEBUG prints enabled</arg>
+<arg>strip_spaces=True</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20231015 17:49:22.466" endtime="20231015 17:49:22.468"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231015 17:49:23.660" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231015 17:49:22.647" endtime="20231015 17:49:23.661"/>
+</kw>
+<status status="PASS" starttime="20231015 17:49:21.295" endtime="20231015 17:49:23.743"/>
+</test>
+<test id="s1-t3" name="Yellow Mode" line="23">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Yellow on indefinitely</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231015 17:49:23.880" endtime="20231015 17:49:23.891"/>
+</kw>
+<kw name="YellowBlink">
+<kw name="Write Data" library="SerialLibrary">
+<arg>!YELLOW\n</arg>
+<arg>encoding=ascii</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" starttime="20231015 17:49:23.906" endtime="20231015 17:49:23.920"/>
+</kw>
+<status status="PASS" starttime="20231015 17:49:23.906" endtime="20231015 17:49:23.921"/>
+</kw>
+<kw name="Read Until" library="SerialLibrary">
+<var>${read}</var>
+<arg>terminator=${\n}</arg>
+<arg>encoding=ascii</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<msg timestamp="20231015 17:49:24.980" level="INFO">${read} = YELLOW_debug
+</msg>
+<status status="PASS" starttime="20231015 17:49:23.952" endtime="20231015 17:49:24.980"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${read}</arg>
+<arg>YELLOW_debug</arg>
+<arg>strip_spaces=True</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20231015 17:49:24.980" endtime="20231015 17:49:24.980"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231015 17:49:29.980" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20231015 17:49:24.980" endtime="20231015 17:49:29.980"/>
+</kw>
+<status status="PASS" starttime="20231015 17:49:23.877" endtime="20231015 17:49:29.980"/>
+</test>
+<test id="s1-t4" name="Force Stop Any Mode" line="29">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Forcing lights of in 3s</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231015 17:49:30.004" endtime="20231015 17:49:30.011"/>
+</kw>
+<kw name="Force Stop">
+<kw name="Write Data" library="SerialLibrary">
+<arg>!OFF\n</arg>
+<arg>encoding=ascii</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" starttime="20231015 17:49:30.022" endtime="20231015 17:49:30.023"/>
+</kw>
+<status status="PASS" starttime="20231015 17:49:30.021" endtime="20231015 17:49:30.024"/>
+</kw>
+<kw name="Read Until" library="SerialLibrary">
+<var>${read}</var>
+<arg>terminator=${\n}</arg>
+<arg>encoding=ascii</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<msg timestamp="20231015 17:49:31.051" level="INFO">${read} = !OFF_debug
+</msg>
+<status status="PASS" starttime="20231015 17:49:30.027" endtime="20231015 17:49:31.051"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${read}</arg>
+<arg>!OFF_debug</arg>
+<arg>strip_spaces=True</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20231015 17:49:31.059" endtime="20231015 17:49:31.061"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231015 17:49:33.064" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20231015 17:49:31.062" endtime="20231015 17:49:33.064"/>
+</kw>
+<status status="PASS" starttime="20231015 17:49:30.000" endtime="20231015 17:49:33.064"/>
+</test>
+<test id="s1-t5" name="LED ON" line="35">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Turning Red Led ON for 4s</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231015 17:49:33.079" endtime="20231015 17:49:33.081"/>
+</kw>
+<kw name="Turn Red Led On 4s">
+<kw name="Write Data" library="SerialLibrary">
+<arg>RED,4,ON\n</arg>
+<arg>encoding=ascii</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" starttime="20231015 17:49:33.083" endtime="20231015 17:49:33.084"/>
+</kw>
+<status status="PASS" starttime="20231015 17:49:33.082" endtime="20231015 17:49:33.084"/>
+</kw>
+<kw name="Read Until" library="SerialLibrary">
+<var>${read}</var>
+<arg>terminator=${\n}</arg>
+<arg>encoding=ascii</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<msg timestamp="20231015 17:49:34.111" level="INFO">${read} = COMMAND_OK
+</msg>
+<status status="PASS" starttime="20231015 17:49:33.086" endtime="20231015 17:49:34.112"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${read}</arg>
+<arg>COMMAND_OK</arg>
+<arg>strip_spaces=True</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20231015 17:49:34.114" endtime="20231015 17:49:34.115"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231015 17:49:39.117" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20231015 17:49:34.116" endtime="20231015 17:49:39.117"/>
+</kw>
+<status status="PASS" starttime="20231015 17:49:33.077" endtime="20231015 17:49:39.117"/>
+</test>
+<test id="s1-t6" name="TRAFFIC Mode" line="41">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Turning ON Traffic Light Mode</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231015 17:49:39.129" endtime="20231015 17:49:39.129"/>
+</kw>
+<kw name="TrafficMode">
+<kw name="Write Data" library="SerialLibrary">
+<arg>!TRAFFIC\n</arg>
+<arg>encoding=ascii</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" starttime="20231015 17:49:39.129" endtime="20231015 17:49:39.129"/>
+</kw>
+<status status="PASS" starttime="20231015 17:49:39.129" endtime="20231015 17:49:39.129"/>
+</kw>
+<kw name="Read Until" library="SerialLibrary">
+<var>${read}</var>
+<arg>terminator=${\n}</arg>
+<arg>encoding=ascii</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<msg timestamp="20231015 17:49:40.169" level="INFO">${read} = !TRAFFIC_debug
+</msg>
+<status status="PASS" starttime="20231015 17:49:39.129" endtime="20231015 17:49:40.169"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${read}</arg>
+<arg>!TRAFFIC_debug</arg>
+<arg>strip_spaces=True</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20231015 17:49:40.169" endtime="20231015 17:49:40.169"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>12s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231015 17:49:52.170" level="INFO">Slept 12 seconds</msg>
+<status status="PASS" starttime="20231015 17:49:40.169" endtime="20231015 17:49:52.170"/>
+</kw>
+<status status="PASS" starttime="20231015 17:49:39.117" endtime="20231015 17:49:52.170"/>
+</test>
+<test id="s1-t7" name="Green Blink" line="47">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Green Blink for 5 seconds</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231015 17:49:52.170" endtime="20231015 17:49:52.170"/>
+</kw>
+<kw name="Green Blink">
+<kw name="Write Data" library="SerialLibrary">
+<arg>GREEN,5,BLINK\n</arg>
+<arg>encoding=ascii</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" starttime="20231015 17:49:52.170" endtime="20231015 17:49:52.170"/>
+</kw>
+<status status="PASS" starttime="20231015 17:49:52.170" endtime="20231015 17:49:52.170"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>6s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231015 17:49:58.170" level="INFO">Slept 6 seconds</msg>
+<status status="PASS" starttime="20231015 17:49:52.170" endtime="20231015 17:49:58.170"/>
+</kw>
+<kw name="Read Until" library="SerialLibrary">
+<var>${read}</var>
+<arg>terminator=${\n}</arg>
+<arg>encoding=ascii</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<msg timestamp="20231015 17:49:59.191" level="INFO">${read} = COMMAND_OK
+</msg>
+<status status="PASS" starttime="20231015 17:49:58.170" endtime="20231015 17:49:59.191"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${read}</arg>
+<arg>COMMAND_OK</arg>
+<arg>strip_spaces=True</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20231015 17:49:59.191" endtime="20231015 17:49:59.191"/>
+</kw>
+<status status="PASS" starttime="20231015 17:49:52.170" endtime="20231015 17:49:59.191"/>
+</test>
+<test id="s1-t8" name="Command Error" line="53">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Writing "GREEN,5,FAIL" Expecting COMMAND_ERROR</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231015 17:49:59.191" endtime="20231015 17:49:59.207"/>
+</kw>
+<kw name="Write Data" library="SerialLibrary">
+<arg>GREEN,5,FAIL\n</arg>
+<arg>encoding=ascii</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" starttime="20231015 17:49:59.211" endtime="20231015 17:49:59.212"/>
+</kw>
+<kw name="Read Until" library="SerialLibrary">
+<var>${read}</var>
+<arg>terminator=${\n}</arg>
+<arg>encoding=ascii</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<msg timestamp="20231015 17:50:00.245" level="INFO">${read} = COMMAND_ERROR
+</msg>
+<status status="PASS" starttime="20231015 17:49:59.215" endtime="20231015 17:50:00.245"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${read}</arg>
+<arg>COMMAND_ERROR</arg>
+<arg>strip_spaces=True</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20231015 17:50:00.245" endtime="20231015 17:50:00.245"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231015 17:50:01.261" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231015 17:50:00.261" endtime="20231015 17:50:01.261"/>
+</kw>
+<status status="PASS" starttime="20231015 17:49:59.191" endtime="20231015 17:50:01.261"/>
+</test>
+<test id="s1-t9" name="Color Error" line="59">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Writing "BLUE,5,BLINK" Expecting COLOR_ERROR</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231015 17:50:01.302" endtime="20231015 17:50:01.319"/>
+</kw>
+<kw name="Write Data" library="SerialLibrary">
+<arg>BLUE,5,BLINK\n</arg>
+<arg>encoding=ascii</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" starttime="20231015 17:50:01.322" endtime="20231015 17:50:01.324"/>
+</kw>
+<kw name="Read Until" library="SerialLibrary">
+<var>${read}</var>
+<arg>terminator=${\n}</arg>
+<arg>encoding=ascii</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<msg timestamp="20231015 17:50:02.364" level="INFO">${read} = COLOR_ERROR
+</msg>
+<status status="PASS" starttime="20231015 17:50:01.338" endtime="20231015 17:50:02.364"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${read}</arg>
+<arg>COLOR_ERROR</arg>
+<arg>strip_spaces=True</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20231015 17:50:02.366" endtime="20231015 17:50:02.367"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231015 17:50:03.370" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231015 17:50:02.368" endtime="20231015 17:50:03.370"/>
+</kw>
+<status status="PASS" starttime="20231015 17:50:01.302" endtime="20231015 17:50:03.372"/>
+</test>
+<test id="s1-t10" name="Time Error" line="65">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Writing "RED,70,BLINK" Expecting TIME_ERROR</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231015 17:50:03.386" endtime="20231015 17:50:03.388"/>
+</kw>
+<kw name="Write Data" library="SerialLibrary">
+<arg>RED,70,BLINK\n</arg>
+<arg>encoding=ascii</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" starttime="20231015 17:50:03.388" endtime="20231015 17:50:03.390"/>
+</kw>
+<kw name="Read Until" library="SerialLibrary">
+<var>${read}</var>
+<arg>terminator=${\n}</arg>
+<arg>encoding=ascii</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<msg timestamp="20231015 17:50:04.415" level="INFO">${read} = TIME_ERROR
+</msg>
+<status status="PASS" starttime="20231015 17:50:03.391" endtime="20231015 17:50:04.415"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${read}</arg>
+<arg>TIME_ERROR</arg>
+<arg>strip_spaces=True</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20231015 17:50:04.416" endtime="20231015 17:50:04.416"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231015 17:50:05.417" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231015 17:50:04.416" endtime="20231015 17:50:05.417"/>
+</kw>
+<status status="PASS" starttime="20231015 17:50:03.385" endtime="20231015 17:50:05.417"/>
+</test>
+<test id="s1-t11" name="Turn Off Debug" line="71">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Turning Debug OFF, ending test</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231015 17:50:05.417" endtime="20231015 17:50:05.417"/>
+</kw>
+<kw name="DebugON/OFF">
+<kw name="Write Data" library="SerialLibrary">
+<arg>?DEBUG\n</arg>
+<arg>encoding=ascii</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" starttime="20231015 17:50:05.417" endtime="20231015 17:50:05.417"/>
+</kw>
+<status status="PASS" starttime="20231015 17:50:05.417" endtime="20231015 17:50:05.417"/>
+</kw>
+<kw name="Read Until" library="SerialLibrary">
+<var>${read}</var>
+<arg>terminator=${\n}</arg>
+<arg>encoding=ascii</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<msg timestamp="20231015 17:50:06.447" level="INFO">${read} = DEBUG prints disabled
+</msg>
+<status status="PASS" starttime="20231015 17:50:05.417" endtime="20231015 17:50:06.447"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${read}</arg>
+<arg>DEBUG prints disabled</arg>
+<arg>strip_spaces=True</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20231015 17:50:06.447" endtime="20231015 17:50:06.447"/>
+</kw>
+<status status="PASS" starttime="20231015 17:50:05.417" endtime="20231015 17:50:06.447"/>
+</test>
+<test id="s1-t12" name="Disconnect Serial" line="78">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Disconnecting ${board}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231015 17:50:06.447" endtime="20231015 17:50:06.447"/>
+</kw>
+<kw name="Delete Port" library="SerialLibrary" type="TEARDOWN">
+<arg>${com}</arg>
+<doc>Deletes specified port.</doc>
+<status status="PASS" starttime="20231015 17:50:06.447" endtime="20231015 17:50:06.447"/>
+</kw>
+<status status="PASS" starttime="20231015 17:50:06.447" endtime="20231015 17:50:06.462"/>
+</test>
+<status status="PASS" starttime="20231015 17:49:19.665" endtime="20231015 17:50:06.466"/>
+</suite>
+<statistics>
+<total>
+<stat pass="12" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="12" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
